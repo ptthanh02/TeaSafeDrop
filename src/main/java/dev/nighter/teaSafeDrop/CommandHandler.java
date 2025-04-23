@@ -5,7 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,11 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Check if sender has permission to use the commands
+        if (!sender.hasPermission("teasafedrop.use")) {
+            return false; // Return false to hide the command from non-privileged users
+        }
+
         if (args.length == 0) {
             // Display plugin info if no arguments
             showPluginInfo(sender);
@@ -35,11 +39,8 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
             }
 
             // Reload the plugin config
-            Scheduler.runTaskAsync(() -> {
-                plugin.loadConfig();
-                sender.sendMessage(ChatColor.GREEN + "TeaSafeDrop configuration reloaded successfully!");
-            });
-
+            plugin.loadConfig();
+            sender.sendMessage(ChatColor.GREEN + "TeaSafeDrop configuration reloaded successfully!");
             return true;
         } else if (subCommand.equals("help")) {
             showHelp(sender);
@@ -71,6 +72,11 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        // Don't provide tab completions for players without permission
+        if (!sender.hasPermission("teasafedrop.use")) {
+            return new ArrayList<>(); // Return empty list to hide tab completions
+        }
+
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {

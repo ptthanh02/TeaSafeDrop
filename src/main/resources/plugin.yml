@@ -10,7 +10,12 @@ commands:
     description: Main command for TeaSafeDrop plugin
     aliases: [ts]
     usage: /teasafedrop [reload|help]
+    permission: teasafedrop.use
+    permission-message: ""
 permissions:
   teasafedrop.reload:
     description: Allows reloading the plugin configuration
+    default: op
+  teasafedrop.use:
+    description: Allows using the plugin commands
     default: op
