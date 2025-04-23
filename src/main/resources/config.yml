@@ -1,0 +1,48 @@
+# TeaSafeDrop Configuration
+# This plugin protects specified items from explosions and fire damage
+
+# Global settings
+settings:
+  # Enable debug mode for more detailed logging
+  debug: false
+  # Default protection status for worlds not specifically configured
+  default-protection-enabled: true
+
+# Items to protect from explosions and fire
+protected-items:
+  # Format: MATERIAL_NAME: true/false
+  DIAMOND_SWORD: true
+  DIAMOND_PICKAXE: true
+  DIAMOND_AXE: true
+  DIAMOND_SHOVEL: true
+  DIAMOND_HOE: true
+  DIAMOND_HELMET: true
+  DIAMOND_CHESTPLATE: true
+  DIAMOND_LEGGINGS: true
+  DIAMOND_BOOTS: true
+  NETHERITE_SWORD: true
+  NETHERITE_PICKAXE: true
+  NETHERITE_AXE: true
+  NETHERITE_SHOVEL: true
+  NETHERITE_HOE: true
+  NETHERITE_HELMET: true
+  NETHERITE_CHESTPLATE: true
+  NETHERITE_LEGGINGS: true
+  NETHERITE_BOOTS: true
+  ELYTRA: true
+
+# Per-world configurations
+# Overrides the default-protection-enabled setting for specific worlds
+worlds:
+  world:
+    protection-enabled: true
+    # Override global protected items for specific worlds
+    # If not specified, global protected-items will be used
+    protected-items:
+    # Format: MATERIAL_NAME: true/false
+    # If commented out, global settings will be used
+    # DIAMOND: false
+  world_nether:
+    protection-enabled: true
+  world_the_end:
+    protection-enabled: true

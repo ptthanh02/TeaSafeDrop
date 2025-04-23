@@ -1,0 +1,16 @@
+name: TeaSafeDrop
+version: '${version}'
+main: dev.nighter.teaSafeDrop.TeaSafeDrop
+api-version: '1.21'
+authors: [ Nighter ]
+folia-supported: true
+description: Protects specific items from explosions and fire
+commands:
+  teasafedrop:
+    description: Main command for TeaSafeDrop plugin
+    aliases: [ts]
+    usage: /teasafedrop [reload|help]
+permissions:
+  teasafedrop.reload:
+    description: Allows reloading the plugin configuration
+    default: op
